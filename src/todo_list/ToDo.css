@@ -1,0 +1,10 @@
+.item{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background: #ccc;
+    border: 1px solid #abcedf;
+    box-shadow: 5px 5px 5px #eee;
+    border-radius: 5px;
+    margin: 10px;
+}

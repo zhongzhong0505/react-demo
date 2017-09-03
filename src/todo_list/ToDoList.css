@@ -1,0 +1,5 @@
+.list{
+    display: flex;
+    justify-content: space-evenly;/*每一个元素之间的空隙相等*/
+    flex-wrap: wrap;/**/
+}
