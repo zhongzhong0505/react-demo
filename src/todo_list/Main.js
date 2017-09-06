@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ToDoList from './ToDoList.js';
 import ToDoInput from './ToDoInput.js'
+import emitter from '../event/events';
 
 class ToDoMain extends Component{
     constructor(props){
@@ -14,13 +15,14 @@ class ToDoMain extends Component{
             text:'bbb'
           }]
         };
-    }
-    handlerDelete(todo){
-        var index = this.state.todos.findIndex(item=>item.id===todo.id);
-        this.setState({
-            todos:this.state.todos.splice(index,1) && this.state.todos
+        emitter.on('delete',id=>{
+            var index = this.state.todos.findIndex(item=>item.id===id);
+            this.setState({
+                todos:this.state.todos.splice(index,1) && this.state.todos
+            });
         });
     }
+
     handlerEnter(){
         debugger
     }
@@ -36,7 +38,7 @@ class ToDoMain extends Component{
         return (
             <div>
                 <ToDoInput onEnter={this.handlerEnter.bind(this)} addTodo={this.addTodo.bind(this)}/>
-                <ToDoList todos={this.state.todos} handlerDelete={this.handlerDelete.bind(this)} />
+                <ToDoList todos={this.state.todos}  />
             </div>
         );
     }

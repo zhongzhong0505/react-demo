@@ -1,5 +1,8 @@
-import React, { Component ,PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './ToDo.css';
+
+import emitter from '../event/events';
 
 class ToDo extends Component{
     static contextTypes = {
@@ -8,9 +11,12 @@ class ToDo extends Component{
     render(){
         return (
             <div className="item">{this.props.text}
-                <button onClick={this.props.handlerDelete} style={{background:this.context.color}}>X</button>
+                <button onClick={this.onClick.bind(this,this.props.id)} style={{background:this.context.color}}>X</button>
             </div>
         );
+    }
+    onClick(id){
+        emitter.emit('delete',id);
     }
 }
 
