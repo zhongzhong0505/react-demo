@@ -15,12 +15,19 @@ class ToDoMain extends Component{
             text:'bbb'
           }]
         };
-        emitter.on('delete',id=>{
+        
+    }
+    componentDidMount(){
+        this.handlerDelete = emitter.on('delete',id=>{
             var index = this.state.todos.findIndex(item=>item.id===id);
             this.setState({
                 todos:this.state.todos.splice(index,1) && this.state.todos
             });
         });
+    }
+    componentWillUnmount(){
+        
+        emitter.removeListener(this.handlerDelete);
     }
 
     handlerEnter(){

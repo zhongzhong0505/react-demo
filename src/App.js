@@ -4,6 +4,8 @@ import './App.css';
 import ToDoMain from './todo_list/Main.js';
 import classNames from 'classnames';
 import styles from './button.css';
+import SelectInput from './select_list/SelectInput';
+import State from './state/state.js'; 
 
 class App extends Component {
   constructor(props){
@@ -31,16 +33,21 @@ class App extends Component {
         'btn-pressed': this.state.isPressed ,
          btnPrimary:this.state.btnPrimary
       });
+      
       return (
         <div className="App">
-          <ToDoMain></ToDoMain>
-          <form onSubmit={this.handlerSubmit}>
-            <input ref="name" type="text" />
-            <button type="submit" className={styles[btnClass]} onClick={this.onClick}>Submit</button>
-          </form>
+          <State />
+
+          
+          
         </div>
       );
   }
 }
-
+/* <SelectInput placeholder="search for..." selectedItem={{text:'我的天'}} />
+          <ToDoMain></ToDoMain>
+          <form onSubmit={this.handlerSubmit}>
+            <input ref="name" type="text" />
+            <button type="submit" className={styles[btnClass]} onClick={this.onClick}>Submit</button>
+          </form> */
 export default App;
